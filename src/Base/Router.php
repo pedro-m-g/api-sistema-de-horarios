@@ -3,6 +3,7 @@
 namespace Timetables\Base;
 
 use Timetables\Exception\NotFoundException;
+use Timetables\Base\Request;
 
 class Router
 {
@@ -14,11 +15,13 @@ class Router
     $this->mappings = $mappings;
   }
 
-  public function getController($path)
+  public function getController(Request $request)
   {
-    if (!array_key_exists($path, $this->mappings))
+    $path = $request->getPath();
+    $http_method = $request->getMethod();
+    if (!$this->routeExists($request))
       throw new NotFoundException();
-    $match = $this->mappings[$path];
+    $match = $this->mappings[$path][$http_method];
     $obj = new $match['controller'];
     $method = $match['method'];
     return [$obj, $method];
@@ -28,6 +31,14 @@ class Router
   {
     $mappings = require_once($file);
     return new Router($mappings);
+  }
+
+  private function routeExists(Request $request)
+  {
+    $path = $request->getPath();
+    $method = $request->getMethod();
+    return array_key_exists($path, $this->mappings) &&
+           array_key_exists($method, $this->mappings[$path]);
   }
 
 }

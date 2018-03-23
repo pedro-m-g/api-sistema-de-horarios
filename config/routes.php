@@ -4,7 +4,9 @@ use Timetables\Controller\IndexController;
 
 return [
   '/' => [
-    'controller' => IndexController::class,
-    'method' => 'hello'
+    'GET' => [
+      'controller' => IndexController::class,
+      'method' => 'hello'
+    ]
   ]
 ];

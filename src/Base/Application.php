@@ -19,7 +19,7 @@ class Application
   public function handle(Request $request)
   {
     try {
-      $controller = $this->router->getController($request->getPath());
+      $controller = $this->router->getController($request);
       return $controller($request);
     } catch (AppException $ex) {
       return $ex->render($request);
