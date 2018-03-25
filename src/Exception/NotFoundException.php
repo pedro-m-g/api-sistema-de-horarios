@@ -13,7 +13,7 @@ class NotFoundException extends AppException
       'error' => 'Ruta no encontrada',
       'path' => $request->getPath(),
       'method' => $request->getMethod()
-    ]);
+    ], 404);
   }
 
 }
