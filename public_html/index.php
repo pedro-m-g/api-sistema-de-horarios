@@ -17,5 +17,6 @@ define('CONFIG_PATH', __DIR__ . '/../config');
 
 $app = new Application();
 $request = Request::getInstance();
+$app->configure();
 $response = $app->handle($request);
 $response->send();

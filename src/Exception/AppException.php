@@ -1,10 +1,10 @@
 <?php
 
-namespace Timetables\Exception;
+namespace Yonkes\Exception;
 
 use Exception;
-use Timetables\Base\Request;
-use Timetables\Concerns\CreatesJsonResponses;
+use Yonkes\Base\Request;
+use Yonkes\Concerns\CreatesJsonResponses;
 
 abstract class AppException extends Exception
 {
