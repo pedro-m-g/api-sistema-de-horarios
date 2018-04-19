@@ -11,11 +11,12 @@ class Authenticator
 
     public function checkLogin($request, $app)
     {
-        $token = $request->header('X-AUTH-TOKEN');
+        $token = $request->header('X-AUTH-TOKEN') || 'BLOCK';
         $user = $app->repository('users')->findByToken($token);
         if (!$this->checkAccess($user, $request)) {
             throw new AuthenticationException("No autorizado");
         }
+        return $user;
     }
 
     private function checkAccess($user, $request)
