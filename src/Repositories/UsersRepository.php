@@ -16,5 +16,19 @@ class UsersRepository extends Repository
     {
         return $this->select('users');
     }
+
+    public function findByToken($token)
+    {
+        $users = $this->db->query(
+            'SELECT * FROM users WHERE token = :token',
+            [
+                'token' => $token
+            ]
+        );
+        if (empty($users)) {
+            return null;
+        }
+        return $users[0];
+    }
     
 }

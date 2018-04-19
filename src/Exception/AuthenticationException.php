@@ -4,14 +4,14 @@ namespace Timetables\Exception;
 
 use Timetables\Base\Request;
 
-class DatabaseException extends AppException
+class AuthenticationException extends AppException
 {
 
   public function render(Request $request)
   {
     return $this->json([
       'error' => $this->message
-    ], 500);
+    ], 403);
   }
 
 }

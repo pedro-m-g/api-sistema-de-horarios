@@ -6,7 +6,8 @@ return [
   '/' => [
     'GET' => [
       'controller' => IndexController::class,
-      'method' => 'hello'
+      'method' => 'hello',
+      'except' => ['guest']
     ]
   ]
 ];

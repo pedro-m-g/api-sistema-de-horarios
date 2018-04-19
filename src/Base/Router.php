@@ -24,6 +24,7 @@ class Router
     $match = $this->mappings[$path][$http_method];
     $obj = new $match['controller'];
     $method = $match['method'];
+    $request->_metadata = $match;
     return [$obj, $method];
   }
 
