@@ -20,7 +20,7 @@ class Router
     $path = $request->getPath();
     $http_method = $request->getMethod();
     if (!$this->routeExists($request))
-      throw new NotFoundException();
+      throw new NotFoundException("La ruta {$request->getPath()} ({$request->getMethod()}) no existe");
     $match = $this->mappings[$path][$http_method];
     $obj = new $match['controller'];
     $method = $match['method'];

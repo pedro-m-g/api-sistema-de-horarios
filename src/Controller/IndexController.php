@@ -10,7 +10,7 @@ class IndexController extends Controller
 
   public function hello(Request $request, Application $app)
   {
-    $users = $app->db->query('SELECT * FROM users');
+    $users = $app->repository('users')->all();
     return $this->json($users);
   }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Yonkes\Exception;
+namespace Timestables\Exception;
 
-use Yonkes\Base\Request;
+use Timetables\Base\Request;
 
 class DatabaseException extends AppException
 {

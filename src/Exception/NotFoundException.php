@@ -1,8 +1,8 @@
 <?php
 
-namespace Yonkes\Exception;
+namespace Timetables\Exception;
 
-use Yonkes\Base\Request;
+use Timetables\Base\Request;
 
 class NotFoundException extends AppException
 {
