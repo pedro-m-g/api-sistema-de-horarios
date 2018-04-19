@@ -20,7 +20,7 @@ class UsersRepository extends Repository
     public function findByToken($token)
     {
         $users = $this->db->query(
-            'SELECT * FROM users WHERE token = :token',
+            'SELECT users.*, roles.name as role FROM users JOIN roles ON roles.id = users.role_id AND token = :token',
             [
                 'token' => $token
             ]
