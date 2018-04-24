@@ -1,13 +1,12 @@
 <?php
 
-use Timetables\Controller\IndexController;
+use Timetables\Controller\AuthController;
 
 return [
-  '/' => [
-    'GET' => [
-      'controller' => IndexController::class,
-      'method' => 'hello',
-      'except' => ['guest']
+  '/login' => [
+    'POST' => [
+      'controller' => AuthController::class,
+      'method' => 'login'
     ]
   ]
 ];

@@ -31,7 +31,7 @@ class DB
         foreach ($bindings as $key => $value) {
           $statement->bindParam($key, $value);
         }
-        $statement->execute();
+        $result = $statement->execute();
         if ($fetch) {
           $statement->setFetchMode(PDO::FETCH_ASSOC);
           return $statement->fetchAll();
