@@ -1,7 +1,9 @@
 <?php
 
 use Timetables\Middleware\AuthenticationMiddleware;
+use Timetables\Middleware\ValidationMiddleware;
 
 return [
-    AuthenticationMiddleware::class
+    AuthenticationMiddleware::class,
+    ValidationMiddleware::class
 ];
