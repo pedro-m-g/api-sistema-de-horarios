@@ -3,6 +3,7 @@
 namespace Timetables\Database;
 
 use PDO;
+use PDOException;
 use Timetables\Exception\DatabaseException;
 
 class DB
@@ -28,10 +29,8 @@ class DB
     {
       try {
         $statement = $this->connection->prepare($sql);
-        foreach ($bindings as $key => $value) {
-          $statement->bindParam($key, $value);
-        }
-        $result = $statement->execute();
+        $statement->execute($bindings);
+        var_dump($sql, $bindings, $statement->rowCount());
         if ($fetch) {
           $statement->setFetchMode(PDO::FETCH_ASSOC);
           return $statement->fetchAll();
