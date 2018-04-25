@@ -30,7 +30,6 @@ class DB
       try {
         $statement = $this->connection->prepare($sql);
         $statement->execute($bindings);
-        var_dump($sql, $bindings, $statement->rowCount());
         if ($fetch) {
           $statement->setFetchMode(PDO::FETCH_ASSOC);
           return $statement->fetchAll();
