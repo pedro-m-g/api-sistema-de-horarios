@@ -15,6 +15,11 @@ class Repository
         $this->db = $db;
     }
 
+    public function create($entity)
+    {
+        $sql = "INSERT INTO {$this->table} ($fields) VALUES ($values)";
+    }
+
     public function update($entity)
     {
         $sql = "UPDATE {$this->table} SET ";

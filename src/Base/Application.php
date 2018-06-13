@@ -34,7 +34,7 @@ class Application
     $this->loadMiddleware($middleware);
   }
 
-  public function handle(Request $request)
+  public function handle($request)
   {
     try {
       $controller = $this->router->getController($request);

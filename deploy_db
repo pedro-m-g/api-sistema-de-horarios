@@ -1,0 +1,23 @@
+USER="horariosfc"
+HOST="lcc.ens.uabc.mx"
+REMOTE_DIR="~/"
+
+LOCAL_DB_USER=root
+LOCAL_DB_NAME=horarios
+DB="db.sql"
+
+mysqldump -u $LOCAL_DB_USER -p $LOCAL_DB_NAME > $DB
+scp $DB "$USER@$HOST:$REMOTE_DIR"
+
+ssh "$USER@$HOST" <<'ENDSSH'
+
+DB="db.sql"
+REMOTE_DB_USER=horariosfc
+REMOTE_DB_NAME=horariosBD
+PASSWORD=$(cat bd_password)
+
+cd $REMOTE_DIR
+mysql -p$PASSWORD $REMOTE_DB_NAME < $DB
+ENDSSH
+
+echo "La base de datos ha sido instalada"
