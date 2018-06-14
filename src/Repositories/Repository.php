@@ -17,7 +17,20 @@ class Repository
 
     public function create($entity)
     {
+        $insert = [];
+        foreach ($entoty->toArray() as $field => $value) {
+            if ($field != 'id') {
+                $insert[$field] = $value;
+            }
+        }
+        $fields = array_keys($insert);
+        $values = array_map(function($field) {
+            return ":$field";
+        }, $fields);
+        $fields = implode(',', $fields);
+        $values = implode(',', $values);
         $sql = "INSERT INTO {$this->table} ($fields) VALUES ($values)";
+        $this->db->query($sql, $insert, false);
     }
 
     public function update($entity)
