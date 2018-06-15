@@ -24,9 +24,7 @@ class ProgramsRepository extends Repository
               'responsible_id' => $user->id
           ]
       );
-      return array_map(function ($program) {
-        return new Program($program);
-      }, $programs);
+      return collect($programs)->mapInto(Program::class);
     }
     
 };

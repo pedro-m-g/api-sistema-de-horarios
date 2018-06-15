@@ -3,5 +3,8 @@
         "psr-4": {
             "Timetables\\": "src/"
         }
+    },
+    "require": {
+        "tightenco/collect": "^5.6"
     }
 }

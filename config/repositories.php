@@ -1,9 +1,11 @@
 <?php
 
-use Timetables\Repositories\UsersRepository;
+use Timetables\Repositories\AcademicsRepository;
 use Timetables\Repositories\ProgramsRepository;
+use Timetables\Repositories\UsersRepository;
 
 return [
-    'users' => UsersRepository::class,
-    'programs' => ProgramsRepository::class
+    'academics' => AcademicsRepository::class,
+    'programs' => ProgramsRepository::class,
+    'users' => UsersRepository::class
 ];
