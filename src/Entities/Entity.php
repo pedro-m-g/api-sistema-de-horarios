@@ -6,7 +6,7 @@ class Entity
 {
 
     protected $attrs;
-    protected $hidden;
+    protected $hidden = [];
 
     private $data;
 
